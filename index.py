@@ -2,10 +2,14 @@ from fastapi import FastAPI
 from aiogram import types, Dispatcher, Bot
 from main import dp, bot, token
 
-
 app = FastAPI()
 WEBHOOK_PATH = f"/bot/{token}"
-WEBHOOK_URL = "https://212.193.61.55" + WEBHOOK_PATH
+WEBHOOK_URL = "http://212.193.61.55" + WEBHOOK_PATH
+
+
+@app.get("/")
+async def root():
+    return {"message": "Dima ne grusti =)"}
 
 
 @app.on_event("startup")

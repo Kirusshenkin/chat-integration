@@ -1,4 +1,5 @@
 import openai
+import uvicorn
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
@@ -48,4 +49,5 @@ async def send3(message: types.Message):
     await message.answer(response['choices'][0]['text'])
 
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    # executor.start_polling(dp, skip_updates=True)
+    uvicorn.run("index:app", host="0.0.0.0.1", port=5000, log_level="info")
